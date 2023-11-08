@@ -7,6 +7,7 @@ import { ConfigProvider } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "@components/layouts/Header";
 import Footer from "@components/layouts/Footer";
+import { BrowserRouter } from "react-router-dom";
 
 const BaseRoutes = lazy(() => import("./routes"));
 
@@ -26,11 +27,15 @@ const App: React.FC = () => {
 					}}
 				>
 					<CssBaseline />
-					<Header />
-					<main className="min-h-[70vh]">
-						<BaseRoutes />
-					</main>
-					<Footer />
+					<BrowserRouter>
+						<section className="max-w-7xl shadow-lg mx-auto bg-white">
+							<Header />
+							<main className="min-h-[70vh]">
+								<BaseRoutes />
+							</main>
+							<Footer />
+						</section>
+					</BrowserRouter>
 				</ConfigProvider>
 			</ThemeProvider>
 		</QueryClientProvider>
