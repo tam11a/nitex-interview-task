@@ -19,11 +19,7 @@ const Footer: React.FC = () => {
 		<footer>
 			<ScrollToTop
 				smooth
-				style={{
-					bottom: "105px",
-					right: "35px",
-				}}
-				className="z-30 bg-slate-800 shadow-slate-900 shadow-md"
+				className="z-30 bg-primary-800 shadow-slate-900 shadow-md"
 				component={
 					<div className="flex flex-row items-center text-white text-xl justify-center">
 						<Iconify icon={"line-md:arrow-up"} />

@@ -30,7 +30,7 @@ const App: React.FC = () => {
 					<BrowserRouter>
 						<section className="max-w-7xl shadow-lg mx-auto bg-white">
 							<Header />
-							<main className="min-h-[70vh]">
+							<main className="min-h-[70vh] p-5">
 								<BaseRoutes />
 							</main>
 							<Footer />
