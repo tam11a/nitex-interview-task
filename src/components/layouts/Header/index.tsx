@@ -44,7 +44,7 @@ const Header: React.FC = () => {
 						autoClearSearchValue
 						size="large"
 						bordered={false}
-						className="w-full max-w-3xl [&>.ant-select-selector]:bg-primary-600 [&>.ant-select-selector>.ant-select-selection-search]:text-white  [&>.ant-select-clear]:bg-transparent"
+						className="w-full max-w-xl [&>.ant-select-selector]:bg-primary-600 [&>.ant-select-selector>.ant-select-selection-search]:text-white  [&>.ant-select-clear]:bg-transparent"
 						placeholder="Search for Products, Brands, Category..."
 						options={options}
 						onSearch={(value) => setQ(value)}
@@ -76,13 +76,12 @@ const Header: React.FC = () => {
 						)}
 					/>
 				</div>
-				<HashLink
-					to="/#all-products"
+				<Link
+					to="/search"
 					className="text-white hidden md:inline-block text-sm"
-					smooth
 				>
 					All Products
-				</HashLink>
+				</Link>
 				<Link
 					to="/contact"
 					className="text-white hidden md:inline-block text-sm"

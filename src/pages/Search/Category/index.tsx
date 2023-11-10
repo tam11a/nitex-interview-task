@@ -16,7 +16,7 @@ const CategoryArea: React.FC<{ title: string }> = ({ title }) => {
 	return (
 		<div>
 			<div
-				className="py-5 "
+				className="py-5 px-7"
 				id={title}
 			>
 				<h3 className="capitalize font-bold text-xl">
