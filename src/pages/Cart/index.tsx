@@ -6,7 +6,7 @@ import { Avatar, Button } from "@mui/material";
 import { Empty, Input, message } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CartPage: React.FC = () => {
 	const cart = useSelector((state: any) => state.cart);
@@ -30,6 +30,8 @@ const CartPage: React.FC = () => {
 		);
 	};
 
+	const navigate = useNavigate();
+
 	const [data, setData] = React.useState<{
 		name: string;
 		phone: string;
@@ -43,24 +45,29 @@ const CartPage: React.FC = () => {
 	const { mutateAsync, isLoading } = useConfirmOrder();
 
 	const order = async () => {
-		message.open({
-			type: "loading",
-			content: "Confirming order..",
-			duration: 0,
-		});
-		const res = await handleResponse(
-			() =>
-				mutateAsync({
-					userId: 1,
-					products: cart?.products?.filter((item: any) => !!item),
-				}),
-			[200]
-		);
-		message.destroy();
-		if (res.status) {
-			dispatch(clean());
+		if (!!data?.name && !!data?.phone && !!data?.address) {
+			message.open({
+				type: "loading",
+				content: "Confirming order..",
+				duration: 0,
+			});
+			const res = await handleResponse(
+				() =>
+					mutateAsync({
+						userId: 1,
+						products: cart?.products?.filter((item: any) => !!item),
+					}),
+				[200]
+			);
+			message.destroy();
+			if (res.status) {
+				dispatch(clean());
+				navigate(`/congratulations/${data?.name}`);
+			} else {
+				message.error(res.message);
+			}
 		} else {
-			message.error(res.message);
+			message.error("Please fill all fields");
 		}
 	};
 
