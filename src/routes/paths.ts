@@ -3,6 +3,7 @@ export const PUBLIC_ROUTES = {
 	SEARCH: "search",
 	PRODUCT: "product/:id",
 	NOTFOUND: "*",
+	CONTACT: "contact",
 };
 
 export const PRIVATE_ROUTES = {
