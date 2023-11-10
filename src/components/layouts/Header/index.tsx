@@ -1,7 +1,17 @@
 import useAuth from "@/hooks/useAuth";
 import { useGetSearch } from "@/queries/product";
 import Iconify from "@components/iconify";
-import { Avatar, Button } from "@mui/material";
+import {
+	Avatar,
+	Button,
+	Drawer,
+	IconButton,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemText,
+} from "@mui/material";
+import { useToggle } from "@tam11a/react-use-hooks";
 import { AutoComplete, Space } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,17 +36,20 @@ const Header: React.FC = () => {
 
 	const navigate = useNavigate();
 	const { isLoggedIn } = useAuth();
+	const { state: open, toggleState: toggleOpen } = useToggle(false);
 
 	return (
 		<header className="bg-primary-light px-8 py-3 shadow-md">
-			<div className="max-w-7xl flex flex-row items-center justify-between gap-4 mx-auto">
-				<Link to={"/"}>
-					<img
-						src="/logo.svg"
-						alt="logo"
-						className="max-h-12"
-					/>
-				</Link>
+			<div className="max-w-7xl flex flex-row items-center justify-between gap-2 sm:gap-4 mx-auto">
+				<div>
+					<Link to={"/"}>
+						<img
+							src="/logo.svg"
+							alt="logo"
+							className="w-20"
+						/>
+					</Link>
+				</div>
 				<div className="flex-1">
 					<AutoComplete
 						menuItemSelectedIcon={<Iconify icon={"iconamoon:search-duotone"} />}
@@ -45,7 +58,7 @@ const Header: React.FC = () => {
 						autoClearSearchValue
 						size="large"
 						bordered={false}
-						className="w-full max-w-xl [&>.ant-select-selector]:bg-primary-600 [&>.ant-select-selector>.ant-select-selection-search]:text-white  [&>.ant-select-clear]:bg-transparent"
+						className="w-44 lg:w-full max-w-[400px] [&>.ant-select-selector]:bg-primary-600 [&>.ant-select-selector>.ant-select-selection-search]:text-white  [&>.ant-select-clear]:bg-transparent"
 						placeholder="Search for Products, Brands, Category..."
 						options={options}
 						onSearch={(value) => setQ(value)}
@@ -91,12 +104,76 @@ const Header: React.FC = () => {
 				</Link>
 				<Button
 					variant="contained"
-					className="text-white bg-primary-dark rounded-full"
+					className="hidden md:flex text-white bg-primary-dark rounded-full"
 					component={Link}
 					to={isLoggedIn ? "/app/user" : "/sign"}
 				>
 					{isLoggedIn ? "My Account" : "Sign in"}
 				</Button>
+				<div className="inline md:hidden">
+					<IconButton
+						className="text-white"
+						onClick={toggleOpen}
+					>
+						<Iconify icon={"mdi:menu"} />
+					</IconButton>
+					<Drawer
+						anchor="right"
+						open={open}
+						onClose={toggleOpen}
+						className="inline md:hidden"
+						PaperProps={{
+							className: "w-[95vw] max-w-xs",
+						}}
+					>
+						<div className="p-5 flex flex-row items-center justify-between">
+							<h1 className="text-2xl font-bold">Menu</h1>
+							<IconButton onClick={toggleOpen}>
+								<Iconify icon="mdi:close" />
+							</IconButton>
+						</div>
+						<List className="p-5">
+							<ListItemButton
+								component={Link}
+								to="/"
+								onClick={toggleOpen}
+							>
+								<ListItemText primary="Home" />
+							</ListItemButton>
+							<ListItemButton
+								component={Link}
+								to="/search"
+								onClick={toggleOpen}
+							>
+								<ListItemText primary="Products" />
+							</ListItemButton>
+							<ListItemButton
+								component={Link}
+								to="/contact"
+								onClick={toggleOpen}
+							>
+								<ListItemText primary="Contact" />
+							</ListItemButton>
+							{isLoggedIn ? (
+								<ListItemButton
+									component={Link}
+									to="/app/user"
+									onClick={toggleOpen}
+								>
+									<ListItemText primary="My Account" />
+								</ListItemButton>
+							) : (
+								<ListItemButton
+									component={Link}
+									to="/sign"
+									onClick={toggleOpen}
+								>
+									<ListItemText primary="Sign in" />
+								</ListItemButton>
+							)}
+						</List>
+					</Drawer>
+				</div>
 			</div>
 		</header>
 	);
