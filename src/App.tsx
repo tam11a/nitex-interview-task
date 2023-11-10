@@ -2,7 +2,6 @@ import React, { lazy } from "react";
 
 import theme from "@styles/theme";
 import ThemeProvider from "@mui/system/ThemeProvider";
-import { CssBaseline } from "@mui/material";
 import { ConfigProvider } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "@components/layouts/Header";
@@ -36,7 +35,6 @@ const App: React.FC = () => {
 							},
 						}}
 					>
-						<CssBaseline />
 						<BrowserRouter>
 							<section className="max-w-[1550px] shadow-lg mx-auto bg-white">
 								<Header />

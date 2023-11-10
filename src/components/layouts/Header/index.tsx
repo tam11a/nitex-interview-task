@@ -27,7 +27,7 @@ const Header: React.FC = () => {
 		setOptions(
 			Array.from(search?.products || []).map((item: any) => ({
 				label: item.title,
-				value: item.id,
+				value: item.id?.toString(),
 				data: item,
 			}))
 		);
@@ -51,7 +51,7 @@ const Header: React.FC = () => {
 				</div>
 				<div className="flex-1">
 					<AutoComplete
-						menuItemSelectedIcon={<Iconify icon={"iconamoon:search-duotone"} />}
+						// menuItemSelectedIcon={<Iconify icon={"iconamoon:search-duotone"} />}
 						showSearch
 						allowClear
 						autoClearSearchValue
