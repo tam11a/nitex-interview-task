@@ -23,6 +23,10 @@ export const publicRoutes = [
 		Component: lazy(() => import("@pages/Sign")),
 	},
 	{
+		path: PUBLIC_ROUTES.CONGRATS,
+		Component: lazy(() => import("@pages/Congrats")),
+	},
+	{
 		path: PUBLIC_ROUTES.NOTFOUND,
 		Component: lazy(() => import("@pages/NotFound")),
 	},
