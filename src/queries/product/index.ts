@@ -12,3 +12,15 @@ export const useGetProducts = (params?: any) => {
 		select: (data) => data.data,
 	});
 };
+
+const getSearch = (params: any) => {
+	return instance.get(`/products/search`, {
+		params,
+	});
+};
+
+export const useGetSearch = (params?: any) => {
+	return useQuery(["get-search", params], () => getSearch(params), {
+		select: (data) => data.data,
+	});
+};

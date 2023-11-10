@@ -13,7 +13,6 @@ import ProductCard from "./components/ProductCard";
 const Home: React.FC = () => {
 	const { data } = useGetCategories();
 	const { data: products } = useGetProducts();
-	console.log(products);
 	return (
 		<>
 			<div className="relative h-[70vh] flex flex-col">

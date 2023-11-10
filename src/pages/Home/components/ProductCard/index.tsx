@@ -1,21 +1,8 @@
+import { ProductCardProps } from "@/types/ProductCard.type";
 import { Rating, Typography } from "@mui/material";
 import { Badge } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-
-type ProductCardProps = {
-	id: number;
-	title: string;
-	description: string;
-	price: number;
-	discountPercentage: number;
-	rating: number;
-	stock: number;
-	brand: string;
-	category: string;
-	thumbnail: string;
-	images: string[];
-};
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	id,
