@@ -12,17 +12,38 @@ import ProductCard from "./components/ProductCard";
 import { Drawer, IconButton } from "@mui/material";
 import Iconify from "@components/iconify";
 import { Checkbox, Divider, Pagination, Slider, Tooltip } from "antd";
-import { useToggle } from "@tam11a/react-use-hooks";
+import { usePaginate, useToggle } from "@tam11a/react-use-hooks";
+import { ProductCardProps } from "@/types/ProductCard.type";
 
 const Home: React.FC = () => {
 	const { data } = useGetCategories();
-	const { data: products } = useGetProducts();
 	const { state: open, toggleState: onClose } = useToggle(false);
-	const [productFilter, setProductFilter] = React.useState({
+	const [productFilter, setProductFilter] = React.useState<{
+		maxPrice: number;
+		minPrice: number;
+		categories: string[];
+	}>({
 		maxPrice: 3000,
 		minPrice: 0,
 		categories: [],
 	});
+
+	const {
+		setPage,
+		page,
+		limit = 0,
+	} = usePaginate({
+		defaultParams: {
+			page: 1,
+			limit: 30,
+		},
+	});
+
+	const { data: products } = useGetProducts({
+		limit: limit,
+		skip: (page + 1) * limit - limit,
+	});
+
 	return (
 		<>
 			<div className="relative h-[70vh] flex flex-col">
@@ -155,15 +176,31 @@ const Home: React.FC = () => {
 				</div>
 			</div>
 			<div className="flex flex-row gap-4 flex-wrap items-center justify-center my-7">
-				{products?.products?.map((product: any) => (
-					<ProductCard
-						key={product.id}
-						{...product}
-					/>
-				))}
+				{products?.products?.map(
+					(product: ProductCardProps) =>
+						product.price >= productFilter.minPrice &&
+						product.price <= productFilter.maxPrice &&
+						(productFilter.categories.length > 0
+							? productFilter.categories.includes(product.category)
+							: true) && (
+							<ProductCard
+								key={product.id}
+								{...product}
+							/>
+						)
+				)}
 			</div>
 			<div className="flex flex-row items-center justify-center">
-				<Pagination />
+				<Pagination
+					pageSize={limit}
+					hideOnSinglePage
+					showSizeChanger={false}
+					current={page + 1}
+					total={products?.total}
+					onChange={(page) => {
+						setPage(page - 1);
+					}}
+				/>
 			</div>
 		</>
 	);
