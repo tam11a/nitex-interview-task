@@ -17,7 +17,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
 	return (
 		<Link to={`/product/${id}`}>
-			<div className="relative w-[274px] border-2 border-slate-200 rounded-2xl py-[6px]">
+			<div
+				className={`relative w-[200px] border-2 border-slate-200 rounded-2xl py-[6px]`}
+			>
 				<Badge.Ribbon
 					text={`${discountPercentage}% OFF`}
 					color="red"
@@ -28,12 +30,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
 						alt={title}
 						height={400}
 						width={400}
-						className="object-cover h-[280px] w-[260px] border border-slate-200 shadow-slate-300 shadow rounded-xl mx-auto"
+						className="object-cover h-[200px] w-[180px] border border-slate-200 shadow-slate-300 shadow rounded-xl mx-auto"
 					/>
 				</Badge.Ribbon>
 				<div
 					className={`relative rounded-xl ${
-						flexbox ? "w-[235px]" : "w-[95%]"
+						flexbox ? "w-[160px]" : "w-[95%]"
 					} p-2 px-3 border border-slate-200 shadow-slate-300 shadow mt-2 mx-auto`}
 				>
 					<Typography
