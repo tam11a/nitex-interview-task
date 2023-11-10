@@ -1,9 +1,11 @@
 import { useGetProduct } from "@/queries/product";
+import { addProduct } from "@/store/cart";
 import Iconify from "@components/iconify";
 import { Avatar, Chip, IconButton } from "@mui/material";
 import { Breadcrumb, Button, Image, Tag } from "antd";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Product: React.FC = () => {
 	const params = useParams();
@@ -21,6 +23,20 @@ const Product: React.FC = () => {
 
 	const [qt, setQt] = React.useState<number>(1);
 
+	const dispatch = useDispatch();
+
+	const addToCart = () => {
+		dispatch(
+			addProduct({
+				id: product?.id,
+				qt,
+				product,
+			})
+		);
+	};
+
+	const navigate = useNavigate();
+
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 			<div>
@@ -37,6 +53,7 @@ const Product: React.FC = () => {
 				<div className="flex flex-row items-center gap-3 flex-wrap">
 					{product?.images?.map((i: string, index: number) => (
 						<Avatar
+							key={i}
 							src={i}
 							variant="rounded"
 							className="border-2 border-primary-200"
@@ -133,14 +150,17 @@ const Product: React.FC = () => {
 						type="primary"
 						size="large"
 						className="bg-primary-700 flex flex-row items-center gap-4"
-						onClick={() => null}
+						onClick={() => addToCart()}
 					>
 						Add to Cart
 					</Button>
 					<Button
 						size="large"
 						className="flex flex-row items-center gap-4 text-primary-600 border-2 border-primary-600"
-						onClick={() => null}
+						onClick={() => {
+							addToCart();
+							navigate("/cart");
+						}}
 					>
 						Order Now
 					</Button>
