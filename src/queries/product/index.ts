@@ -30,6 +30,18 @@ export const useGetCategoryProducts = (params?: any) => {
 	);
 };
 
+const getProduct = (params: any) => {
+	return instance.get(`/products/${params.id}`, {
+		params,
+	});
+};
+
+export const useGetProduct = (params?: any) => {
+	return useQuery(["get-product", params], () => getProduct(params), {
+		select: (data) => data.data,
+	});
+};
+
 const getSearch = (params: any) => {
 	return instance.get(`/products/search`, {
 		params,
