@@ -159,7 +159,7 @@ const Product: React.FC = () => {
 						className="flex flex-row items-center gap-4 text-primary-600 border-2 border-primary-600"
 						onClick={() => {
 							addToCart();
-							navigate("/cart");
+							navigate("/app/cart");
 						}}
 					>
 						Order Now

@@ -7,6 +7,10 @@ export const privateRoutes = [
 		Component: lazy(() => import("@pages/Dashboard")),
 	},
 	{
+		path: PRIVATE_ROUTES.CART,
+		Component: lazy(() => import("@pages/Cart")),
+	},
+	{
 		path: PRIVATE_ROUTES.NOTFOUND,
 		Component: lazy(() => import("@pages/NotFound")),
 	},

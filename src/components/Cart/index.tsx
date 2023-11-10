@@ -92,7 +92,7 @@ const Cart: React.FC = () => {
 				</p>
 				<Button
 					component={Link}
-					to={"/cart"}
+					to={"/app/cart"}
 					variant="contained"
 					className="m-3"
 					size="large"

@@ -7,5 +7,6 @@ export const PUBLIC_ROUTES = {
 
 export const PRIVATE_ROUTES = {
 	DASHBOARD: "",
+	CART: "cart",
 	NOTFOUND: "*",
 };
