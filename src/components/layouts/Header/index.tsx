@@ -90,6 +90,8 @@ const Header: React.FC = () => {
 				<Button
 					variant="contained"
 					className="text-white bg-primary-dark rounded-full"
+					component={Link}
+					to="/sign"
 				>
 					Sign in
 				</Button>

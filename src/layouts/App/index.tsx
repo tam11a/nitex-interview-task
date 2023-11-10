@@ -1,11 +1,15 @@
+import useAuth from "@/hooks/useAuth";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const AppLayout: React.FC = () => {
-	return (
+	const { isLoggedIn } = useAuth();
+	return isLoggedIn ? (
 		<>
 			<Outlet />
 		</>
+	) : (
+		<Navigate to={`/sign`} />
 	);
 };
 
