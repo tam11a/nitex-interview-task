@@ -1,4 +1,4 @@
-# Project Title
+# Arc - Nitex Interview Task
 
 Nitex - Task-based Round Task. The project is done based on the [task](/task.md). [DummyJson](https://dummyjson.com/) is used as a backend service to get dummy datas. Firebase is used for Google Authenticator, and EmailJS for Email from frontend.
 
