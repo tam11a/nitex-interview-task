@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
 	const [q, setQ] = React.useState<string>("");
-	const { data: search, isLoading } = useGetSearch({
+	const { data: search } = useGetSearch({
 		q,
 	});
 
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
 					/>
 				</div>
 				<Link
-					to="/search"
+					to="/#all-products"
 					className="text-white hidden md:inline-block text-sm"
 				>
 					All Products

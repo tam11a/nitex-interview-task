@@ -11,7 +11,13 @@ import { BrowserRouter } from "react-router-dom";
 
 const BaseRoutes = lazy(() => import("./routes"));
 
-const query = new QueryClient();
+const query = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
+});
 
 const App: React.FC = () => {
 	return (

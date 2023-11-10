@@ -13,6 +13,23 @@ export const useGetProducts = (params?: any) => {
 	});
 };
 
+const getCategoryProducts = (params: any) => {
+	return instance.get(`/products/category/${params?.category || ""}`, {
+		params,
+	});
+};
+
+export const useGetCategoryProducts = (params?: any) => {
+	return useQuery(
+		["get-category-products", params],
+		() => getCategoryProducts(params),
+		{
+			enabled: !!params,
+			select: (data) => data.data,
+		}
+	);
+};
+
 const getSearch = (params: any) => {
 	return instance.get(`/products/search`, {
 		params,

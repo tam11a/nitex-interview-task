@@ -9,10 +9,20 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { useGetProducts } from "@/queries/product";
 import ProductCard from "./components/ProductCard";
+import { Drawer, IconButton } from "@mui/material";
+import Iconify from "@components/iconify";
+import { Checkbox, Divider, Pagination, Slider, Tooltip } from "antd";
+import { useToggle } from "@tam11a/react-use-hooks";
 
 const Home: React.FC = () => {
 	const { data } = useGetCategories();
 	const { data: products } = useGetProducts();
+	const { state: open, toggleState: onClose } = useToggle(false);
+	const [productFilter, setProductFilter] = React.useState({
+		maxPrice: 3000,
+		minPrice: 0,
+		categories: [],
+	});
 	return (
 		<>
 			<div className="relative h-[70vh] flex flex-col">
@@ -57,13 +67,103 @@ const Home: React.FC = () => {
 					</Swiper>
 				</div>
 			</div>
-			<div className="flex flex-row gap-4 flex-wrap items-center justify-center my-14">
+			<div
+				id="all-products"
+				className="mt-11 flex flex-row gap-3 items-center justify-center"
+			>
+				<div>
+					<Tooltip title={"Search"}>
+						<IconButton color="primary">
+							<Iconify icon={"iconamoon:search-duotone"} />
+						</IconButton>
+					</Tooltip>
+				</div>
+				<h2 className="text-2xl font-bold">All Products</h2>
+				<div>
+					<Tooltip title={"Filter Products"}>
+						<IconButton
+							color="primary"
+							onClick={onClose}
+						>
+							<Iconify icon={"mi:filter"} />
+						</IconButton>
+					</Tooltip>
+					<Drawer
+						open={open}
+						onClose={onClose}
+						anchor="right"
+						PaperProps={{
+							className: "w-full max-w-[95vw] md:max-w-[500px]",
+						}}
+					>
+						<div className="flex flex-row items-center justify-between py-4 px-7">
+							<p className="font-bold">Filter Products</p>
+							<IconButton
+								color="primary"
+								onClick={onClose}
+							>
+								<Iconify icon={"mdi:close"} />
+							</IconButton>
+						</div>
+						<Divider className="my-0" />
+						<div className="px-7 mt-4">
+							<h4 className="mb-6">
+								Price Range{" "}
+								<span className="text-primary-500">
+									(${productFilter.minPrice} - ${productFilter.maxPrice})
+								</span>
+							</h4>
+							<Slider
+								range={{ draggableTrack: true }}
+								max={5000}
+								min={0}
+								marks={{
+									0: "0",
+									1000: "1k",
+									2000: "2k",
+									3000: "3k",
+									4000: "4k",
+									5000: "5k",
+								}}
+								value={[productFilter.minPrice, productFilter.maxPrice]}
+								onChange={(v: any) => {
+									setProductFilter((prev: any) => ({
+										...prev,
+										minPrice: v[0],
+										maxPrice: v[1],
+									}));
+								}}
+							/>
+						</div>
+						<div className="px-7 mt-4">
+							<h4 className="mb-6">Categories</h4>
+							<Checkbox.Group
+								options={data?.flatMap((item: any) => ({
+									label: item.replace("-", " ").toUpperCase(),
+									value: item,
+								}))}
+								value={productFilter.categories}
+								onChange={(v) => {
+									setProductFilter((prev: any) => ({
+										...prev,
+										categories: v,
+									}));
+								}}
+							/>
+						</div>
+					</Drawer>
+				</div>
+			</div>
+			<div className="flex flex-row gap-4 flex-wrap items-center justify-center my-7">
 				{products?.products?.map((product: any) => (
 					<ProductCard
 						key={product.id}
 						{...product}
 					/>
 				))}
+			</div>
+			<div className="flex flex-row items-center justify-center">
+				<Pagination />
 			</div>
 		</>
 	);

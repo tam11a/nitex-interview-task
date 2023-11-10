@@ -10,4 +10,5 @@ export type ProductCardProps = {
 	category: string;
 	thumbnail: string;
 	images: string[];
+	flexbox?: boolean;
 };
