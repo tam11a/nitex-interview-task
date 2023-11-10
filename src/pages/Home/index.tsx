@@ -14,6 +14,7 @@ import Iconify from "@components/iconify";
 import { Checkbox, Divider, Pagination, Slider, Tooltip } from "antd";
 import { usePaginate, useToggle } from "@tam11a/react-use-hooks";
 import { ProductCardProps } from "@/types/ProductCard.type";
+import { HashLink } from "react-router-hash-link";
 
 const Home: React.FC = () => {
 	const { data } = useGetCategories();
@@ -85,11 +86,14 @@ const Home: React.FC = () => {
 									key={category}
 									className="w-fit hover:scale-105 hover:shadow-lg transition-all duration-300 rounded-md"
 								>
-									<Link to={`/search?=category=${category}`}>
+									<HashLink
+										smooth
+										to={`/search#${category}`}
+									>
 										<div className="capitalize bg-primary-100 bg-opacity-40 hover:bg-opacity-90 bg-blend-multiply text-white hover:text-primary-700 shadow-sm font-bold px-9 py-6 rounded-md drop-shadow-md transition-all duration-300">
 											{category?.replace("-", " ")}
 										</div>
-									</Link>
+									</HashLink>
 								</SwiperSlide>
 							);
 						})}

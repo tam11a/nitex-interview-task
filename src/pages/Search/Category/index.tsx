@@ -15,7 +15,10 @@ const CategoryArea: React.FC<{ title: string }> = ({ title }) => {
 	});
 	return (
 		<div>
-			<div className="py-5 ">
+			<div
+				className="py-5 "
+				id={title}
+			>
 				<h3 className="capitalize font-bold text-xl">
 					{title?.replace("-", " ")}
 				</h3>

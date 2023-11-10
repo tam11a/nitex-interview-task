@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const Cart: React.FC = () => {
 	const cart = useSelector((state: any) => state.cart);
-	console.log(cart);
 	const [totalPrice, setTotalPrice] = React.useState<number>(0);
 
 	React.useEffect(() => {

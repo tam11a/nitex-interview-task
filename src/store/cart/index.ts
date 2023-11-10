@@ -10,9 +10,7 @@ export const cartSlice = createSlice({
 			state.products.push(action.payload);
 		},
 		removeProduct: (state, action) => {
-			state.products = state.products.filter(
-				(product: any) => product.id !== action.payload.index
-			);
+			state.products.splice(action.payload.index, 1);
 		},
 	},
 });
