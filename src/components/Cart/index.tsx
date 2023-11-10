@@ -1,3 +1,4 @@
+import useAuth from "@/hooks/useAuth";
 import Iconify from "@components/iconify";
 import { Avatar, Button, Drawer, IconButton } from "@mui/material";
 import { useToggle } from "@tam11a/react-use-hooks";
@@ -20,7 +21,9 @@ const Cart: React.FC = () => {
 
 	const { state: open, toggleState: toggleOpen } = useToggle(false);
 
-	return (
+	const { isLoggedIn } = useAuth();
+
+	return isLoggedIn ? (
 		<>
 			<Button
 				variant="contained"
@@ -101,6 +104,8 @@ const Cart: React.FC = () => {
 				</Button>
 			</Drawer>
 		</>
+	) : (
+		<></>
 	);
 };
 

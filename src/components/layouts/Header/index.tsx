@@ -1,3 +1,4 @@
+import useAuth from "@/hooks/useAuth";
 import { useGetSearch } from "@/queries/product";
 import Iconify from "@components/iconify";
 import { Avatar, Button } from "@mui/material";
@@ -24,6 +25,7 @@ const Header: React.FC = () => {
 	}, [search]);
 
 	const navigate = useNavigate();
+	const { isLoggedIn } = useAuth();
 
 	return (
 		<header className="bg-primary-light px-8 py-3 shadow-md">
@@ -91,9 +93,9 @@ const Header: React.FC = () => {
 					variant="contained"
 					className="text-white bg-primary-dark rounded-full"
 					component={Link}
-					to="/sign"
+					to={isLoggedIn ? "/user" : "/sign"}
 				>
-					Sign in
+					{isLoggedIn ? "My Account" : "Sign in"}
 				</Button>
 			</div>
 		</header>

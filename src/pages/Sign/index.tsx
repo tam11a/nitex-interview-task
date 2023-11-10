@@ -4,11 +4,14 @@ import { auth } from "@/service/firebase";
 import { message } from "antd";
 import { useDispatch } from "react-redux";
 import { saveToken, saveUser } from "@/store/auth";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 
 const provider = new GoogleAuthProvider();
 
 const Sign: React.FC = () => {
 	const dispatch = useDispatch();
+	let [searchParams] = useSearchParams();
 
 	const signInWithGoogle = () => {
 		signInWithPopup(auth, provider)
@@ -29,10 +32,14 @@ const Sign: React.FC = () => {
 			});
 	};
 
-	return (
+	const { isLoggedIn } = useAuth();
+
+	return !isLoggedIn ? (
 		<div>
 			<button onClick={signInWithGoogle}>Sign in with Google</button>
 		</div>
+	) : (
+		<Navigate to={searchParams.get("redirect") || "/user"} />
 	);
 };
 
