@@ -71,7 +71,10 @@ const Home: React.FC = () => {
 
 			<div className="mx-auto my-4">
 				{categories?.map?.((item: string) => (
-					<CategoryArea title={item} />
+					<CategoryArea
+						title={item}
+						key={item}
+					/>
 				))}
 			</div>
 		</>
