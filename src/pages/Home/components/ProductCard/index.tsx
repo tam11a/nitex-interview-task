@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				</Badge.Ribbon>
 				<div
 					className={`relative rounded-xl ${
-						flexbox ? "w-[215px]" : "w-[95%]"
+						flexbox ? "w-[240px]" : "w-[95%]"
 					} p-2 px-3 border border-slate-200 shadow-slate-300 shadow mt-2 mx-auto`}
 				>
 					<Typography
