@@ -61,7 +61,7 @@ const Home: React.FC = () => {
 						Discover and buy amazing things
 					</p>
 					<Link to={"/search"}>
-						<button className="bg-slate-100 hover:bg-slate-300 text-primary-700 px-7 py-3 rounded-md shadow-md font-bold uppercase mt-8">
+						<button className="bg-slate-100 rounded-full transition-all duration-300 hover:bg-primary-200 text-primary-700 px-7 py-3 shadow-md font-bold uppercase mt-8">
 							Shop Now
 						</button>
 					</Link>
