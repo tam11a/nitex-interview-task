@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
+import { useGetProducts } from "@/queries/product";
+import ProductCard from "./components/ProductCard";
 
 const Home: React.FC = () => {
 	const { data } = useGetCategories();
+	const { data: products } = useGetProducts();
+	console.log(products);
 	return (
 		<>
 			<div className="relative h-[70vh] flex flex-col">
@@ -53,6 +57,14 @@ const Home: React.FC = () => {
 						})}
 					</Swiper>
 				</div>
+			</div>
+			<div className="flex flex-row gap-4 flex-wrap items-center justify-center my-14">
+				{products?.products?.map((product: any) => (
+					<ProductCard
+						key={product.id}
+						{...product}
+					/>
+				))}
 			</div>
 		</>
 	);
