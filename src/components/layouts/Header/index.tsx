@@ -28,7 +28,7 @@ const Header: React.FC = () => {
 
 	return (
 		<header className="bg-primary-light px-8 py-3 shadow-md">
-			<div className="max-w-5xl flex flex-row items-center justify-between gap-4 mx-auto">
+			<div className="max-w-7xl flex flex-row items-center justify-between gap-4 mx-auto">
 				<Link to={"/"}>
 					<img
 						src="/logo.svg"
@@ -43,7 +43,8 @@ const Header: React.FC = () => {
 						allowClear
 						autoClearSearchValue
 						size="large"
-						className="w-full rounded-full"
+						bordered={false}
+						className="w-full max-w-3xl [&>.ant-select-selector]:bg-primary-600 [&>.ant-select-selector>.ant-select-selection-search]:text-white  [&>.ant-select-clear]:bg-transparent"
 						placeholder="Search for Products, Brands, Category..."
 						options={options}
 						onSearch={(value) => setQ(value)}

@@ -38,7 +38,7 @@ const App: React.FC = () => {
 					>
 						<CssBaseline />
 						<BrowserRouter>
-							<section className="max-w-7xl shadow-lg mx-auto bg-white">
+							<section className="max-w-[1550px] shadow-lg mx-auto bg-white">
 								<Header />
 								<main className="min-h-[70vh] p-5">
 									<Cart />

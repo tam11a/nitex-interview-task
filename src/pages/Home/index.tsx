@@ -80,7 +80,7 @@ const Home: React.FC = () => {
 						modules={[Autoplay]}
 						className="items-center p-3 "
 					>
-						{data?.map((category: string) => {
+						{data?.map?.((category: string) => {
 							return (
 								<SwiperSlide
 									key={category}
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
 						<div className="px-7 mt-4">
 							<h4 className="mb-6">Categories</h4>
 							<Checkbox.Group
-								options={data?.flatMap((item: any) => ({
+								options={data?.flatMap?.((item: any) => ({
 									label: item.replace("-", " ").toUpperCase(),
 									value: item,
 								}))}

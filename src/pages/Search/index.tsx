@@ -7,7 +7,7 @@ const Search: React.FC = () => {
 
 	return (
 		<div>
-			{category?.map((item: string) => (
+			{category?.map?.((item: string) => (
 				<CategoryArea title={item} />
 			))}
 		</div>
