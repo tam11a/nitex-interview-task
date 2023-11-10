@@ -93,7 +93,7 @@ const Header: React.FC = () => {
 					variant="contained"
 					className="text-white bg-primary-dark rounded-full"
 					component={Link}
-					to={isLoggedIn ? "/user" : "/sign"}
+					to={isLoggedIn ? "/app/user" : "/sign"}
 				>
 					{isLoggedIn ? "My Account" : "Sign in"}
 				</Button>

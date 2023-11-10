@@ -61,6 +61,16 @@ const CartPage: React.FC = () => {
 			);
 			message.destroy();
 			if (res.status) {
+				localStorage.setItem(
+					"orders",
+					JSON.stringify([
+						...(JSON.parse(localStorage.getItem("orders") || "[]") || []),
+						{
+							products: cart?.products?.filter((item: any) => !!item),
+							receipent: data,
+						},
+					])
+				);
 				dispatch(clean());
 				navigate(`/congratulations/${data?.name}`);
 			} else {

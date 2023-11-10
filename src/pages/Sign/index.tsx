@@ -4,7 +4,7 @@ import { auth } from "@/service/firebase";
 import { message } from "antd";
 import { useDispatch } from "react-redux";
 import { saveToken, saveUser } from "@/store/auth";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import useAuth from "@/hooks/useAuth";
 
 const provider = new GoogleAuthProvider();
@@ -39,7 +39,7 @@ const Sign: React.FC = () => {
 			<button onClick={signInWithGoogle}>Sign in with Google</button>
 		</div>
 	) : (
-		<Navigate to={searchParams.get("redirect") || "/user"} />
+		<Navigate to={searchParams.get("redirect") || "/app/user"} />
 	);
 };
 
