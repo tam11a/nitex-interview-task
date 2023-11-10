@@ -4,7 +4,7 @@ Nitex - Task-based Round Task. The project is done based on the [task](/task.md)
 
 ## Screenshots
 
-![App Screenshot](https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png)
+![App Screenshot](http://e-arc.netlify.app/e-arc.netlify.app_.png)
 
 ## Run Locally
 
