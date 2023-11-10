@@ -59,8 +59,16 @@ const Home: React.FC = () => {
 					<p className="text-white text-lg md:text-2xl font-semibold">
 						Discover and buy amazing things
 					</p>
+					<Link to={"/search"}>
+						<button className="bg-slate-100 hover:bg-slate-300 text-primary-700 px-7 py-3 rounded-md shadow-md font-bold uppercase mt-8">
+							Shop Now
+						</button>
+					</Link>
 				</div>
-				<div className="relative">
+				<div
+					id="all-products"
+					className="relative"
+				>
 					<Swiper
 						spaceBetween={10}
 						slidesPerView={"auto"}
@@ -88,10 +96,7 @@ const Home: React.FC = () => {
 					</Swiper>
 				</div>
 			</div>
-			<div
-				id="all-products"
-				className="mt-11 flex flex-row gap-3 items-center justify-center"
-			>
+			<div className="mt-11 flex flex-row gap-3 items-center justify-center">
 				<div>
 					<Tooltip title={"Search"}>
 						<IconButton color="primary">

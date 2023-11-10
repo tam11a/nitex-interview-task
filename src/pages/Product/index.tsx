@@ -11,11 +11,13 @@ const Product: React.FC = () => {
 		id: params.id,
 	});
 
-	const [image, setImage] = React.useState<string>(product?.images[0]);
+	const [image, setImage] = React.useState<string>(product?.thumbnail);
 
 	const [VisibleImage, setVisibleImage] = React.useState<number | null>(null);
 
-	console.log(product);
+	React.useEffect(() => {
+		setImage(product?.thumbnail);
+	}, [product?.thumbnail]);
 
 	const [qt, setQt] = React.useState<number>(1);
 
@@ -24,7 +26,7 @@ const Product: React.FC = () => {
 			<div>
 				<Image
 					src={image}
-					className="border-2 border-primary-200 rounded-md"
+					className="border-2 border-primary-200 rounded-md w-full h-auto"
 					preview={false}
 					onClick={() =>
 						setVisibleImage(

@@ -25,6 +25,7 @@
 		"react-hook-form": "7.41.5",
 		"react-icons": "4.7.1",
 		"react-router-dom": "6.4.3",
+		"react-router-hash-link": "^2.4.3",
 		"react-scroll-to-top": "3.0.0",
 		"swiper": "^11.0.4"
 	},
@@ -32,6 +33,7 @@
 		"@types/nprogress": "0.2.0",
 		"@types/react": "18.0.24",
 		"@types/react-dom": "18.0.8",
+		"@types/react-router-hash-link": "^2.4.9",
 		"@vitejs/plugin-react": "2.2.0",
 		"autoprefixer": "10.4.13",
 		"cssnano": "5.1.14",

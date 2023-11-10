@@ -4,6 +4,7 @@ import { Avatar, Button } from "@mui/material";
 import { AutoComplete, Space } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const Header: React.FC = () => {
 	const [q, setQ] = React.useState<string>("");
@@ -74,12 +75,13 @@ const Header: React.FC = () => {
 						)}
 					/>
 				</div>
-				<Link
+				<HashLink
 					to="/#all-products"
 					className="text-white hidden md:inline-block text-sm"
+					smooth
 				>
 					All Products
-				</Link>
+				</HashLink>
 				<Link
 					to="/contact"
 					className="text-white hidden md:inline-block text-sm"
