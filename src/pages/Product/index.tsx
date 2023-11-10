@@ -1,6 +1,6 @@
 import { useGetProduct } from "@/queries/product";
 import Iconify from "@components/iconify";
-import { Avatar, Chip, Icon, IconButton } from "@mui/material";
+import { Avatar, Chip, IconButton } from "@mui/material";
 import { Breadcrumb, Button, Image, Tag } from "antd";
 import React from "react";
 import { useParams } from "react-router-dom";
