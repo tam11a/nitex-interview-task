@@ -48,18 +48,18 @@ const Home: React.FC = () => {
 						modules={[Autoplay]}
 						className="items-center p-3 "
 					>
-						{categories?.map?.((category: string) => {
+						{categories?.map?.((category: any) => {
 							return (
 								<SwiperSlide
-									key={category}
+									key={category?.slug}
 									className="w-fit hover:scale-105 hover:shadow-lg transition-all duration-300 rounded-md"
 								>
 									<HashLink
 										smooth
-										to={`/#${category}`}
+										to={`/#${category?.slug}`}
 									>
 										<div className="capitalize bg-primary-100 bg-opacity-40 hover:bg-opacity-90 bg-blend-multiply text-white hover:text-primary-700 shadow-sm font-bold px-9 py-6 rounded-md drop-shadow-md transition-all duration-300">
-											{category?.replace("-", " ")}
+											{category?.name}
 										</div>
 									</HashLink>
 								</SwiperSlide>

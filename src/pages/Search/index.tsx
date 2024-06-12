@@ -13,7 +13,7 @@ const Search: React.FC = () => {
 	const [productFilter, setProductFilter] = React.useState<{
 		maxPrice: number;
 		minPrice: number;
-		categories: string[];
+		categories: any[];
 	}>({
 		maxPrice: 3000,
 		minPrice: 0,
@@ -109,8 +109,8 @@ const Search: React.FC = () => {
 							<h4 className="mb-6">Categories</h4>
 							<Checkbox.Group
 								options={categories?.flatMap?.((item: any) => ({
-									label: item.replace("-", " ").toUpperCase(),
-									value: item,
+									label: item.name,
+									value: item.slug,
 								}))}
 								value={productFilter.categories}
 								onChange={(v) => {

@@ -8,19 +8,19 @@ import { Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 
-const CategoryArea: React.FC<{ title: string }> = ({ title }) => {
+const CategoryArea: React.FC<{ title: any }> = ({ title }) => {
 	const { data } = useGetCategoryProducts({
-		category: title,
+		category: title?.slug,
 		limit: 1000,
 	});
 	return (
 		<div>
 			<div
 				className="py-5 px-7"
-				id={title}
+				id={title?.name}
 			>
 				<h3 className="capitalize font-bold text-xl">
-					{title?.replace("-", " ")}
+					{title?.name}
 				</h3>
 				<p className="font-bold text-primary-400 text-sm">
 					{data?.total || 0} Products Found

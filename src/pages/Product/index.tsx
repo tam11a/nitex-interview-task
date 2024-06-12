@@ -91,7 +91,7 @@ const Product: React.FC = () => {
 				<Breadcrumb className="uppercase font-semibold">
 					<Breadcrumb.Item>{product?.brand}</Breadcrumb.Item>
 					<Breadcrumb.Item>
-						{product?.category?.replace("-", " ")}
+						{product?.category?.name}
 					</Breadcrumb.Item>
 				</Breadcrumb>
 				<h1 className="text-3xl font-semibold my-2 flex flex-row items-center gap-3">
